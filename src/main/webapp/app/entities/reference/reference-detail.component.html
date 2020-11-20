@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reference">
+            <h2><span>Reference</span> {{reference.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Monthly Fee</span></dt>
+                <dd>
+                    <span>{{reference.monthlyFee}}</span>
+                </dd>
+                <dt><span>Yearly Fee</span></dt>
+                <dd>
+                    <span>{{reference.yearlyFee}}</span>
+                </dd>
+                <dt><span>Book Cost</span></dt>
+                <dd>
+                    <span>{{reference.bookCost}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reference', reference.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

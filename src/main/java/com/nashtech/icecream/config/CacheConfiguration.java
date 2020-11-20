@@ -43,6 +43,13 @@ public class CacheConfiguration {
             createCache(cm, com.nashtech.icecream.domain.User.class.getName());
             createCache(cm, com.nashtech.icecream.domain.Authority.class.getName());
             createCache(cm, com.nashtech.icecream.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.nashtech.icecream.domain.Customer.class.getName());
+            createCache(cm, com.nashtech.icecream.domain.FAQ.class.getName());
+            createCache(cm, com.nashtech.icecream.domain.Feedback.class.getName());
+            createCache(cm, com.nashtech.icecream.domain.OnlineOrder.class.getName());
+            createCache(cm, com.nashtech.icecream.domain.PrizeHistory.class.getName());
+            createCache(cm, com.nashtech.icecream.domain.Recipe.class.getName());
+            createCache(cm, com.nashtech.icecream.domain.Reference.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

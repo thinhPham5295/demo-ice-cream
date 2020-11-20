@@ -1,0 +1,19 @@
+{
+    "name": "PrizeHistory",
+    "fields": [
+        {
+            "fieldName": "enableStatus",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20201120044016",
+    "entityTableName": "prize_history",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-recipe-heading">Create or edit a Recipe</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_image">Image</label>
+                    <input type="text" class="form-control" name="image" id="field_image"
+                           formControlName="image"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_desciption">Desciption</label>
+                    <input type="text" class="form-control" name="desciption" id="field_desciption"
+                           formControlName="desciption"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_details">Details</label>
+                    <input type="text" class="form-control" name="details" id="field_details"
+                           formControlName="details"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_author">Author</label>
+                    <input type="text" class="form-control" name="author" id="field_author"
+                           formControlName="author"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_viewNumber">View Number</label>
+                    <input type="number" class="form-control" name="viewNumber" id="field_viewNumber"
+                           formControlName="viewNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_uploadDate">Upload Date</label>
+                    <div class="input-group">
+                        <input id="field_uploadDate" type="text" class="form-control" name="uploadDate" ngbDatepicker  #uploadDateDp="ngbDatepicker" formControlName="uploadDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="uploadDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_enableStatus">Enable Status</label>
+                    <input type="checkbox" class="form-control" name="enableStatus" id="field_enableStatus"
+                           formControlName="enableStatus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_customer">Customer</label>
+                    <select class="form-control" id="field_customer" name="customer" formControlName="customer">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="customerOption.id === editForm.get('customer').value?.id ? editForm.get('customer').value : customerOption" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

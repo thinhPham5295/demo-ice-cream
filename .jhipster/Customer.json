@@ -1,0 +1,52 @@
+{
+    "name": "Customer",
+    "fields": [
+        {
+            "fieldName": "fullName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Gender",
+            "fieldValues": "MALE,FEMALE"
+        },
+        {
+            "fieldName": "birthday",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "avatar",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expiredDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "enableStatus",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20201120044012",
+    "entityTableName": "customer",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
