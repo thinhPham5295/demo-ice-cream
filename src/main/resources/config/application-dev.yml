@@ -37,9 +37,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./target/h2db/db/icecream;DB_CLOSE_DELAY=-1
-    username: icecream
-    password:
+    url: jdbc:mysql://localhost:3306/icecream?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION'
+    username: root
+    password: 123456
     hikari:
       poolName: Hikari
       auto-commit: false
