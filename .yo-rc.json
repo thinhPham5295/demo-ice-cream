@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.nashtech.icecream"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "monolith",
+    "baseName": "icecream",
+    "packageName": "com.nashtech.icecream",
+    "packageFolder": "com/nashtech/icecream",
+    "serverPort": "8082",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MGQ5YTFhYzhkMWY5ZmVmZmJiNjk1YWE4MGJjMWJhMmI3NTE1YmY0MTllYjc0MzM3OGNmYjg5Mzk5Zjc1Mzk0YzA4MGI3ZWMwNzlkZWY5ZTRkMWU3NTQ4MWM1ZmRhOTQxYWM3ZGVlNzU5NzI5YmMzZDE4ZTFmZTFkNmQ1OTE3ZDk=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "cerulean",
+    "clientThemeVariant": "primary",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false
+  }
+}
