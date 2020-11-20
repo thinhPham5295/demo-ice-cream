@@ -1,0 +1,27 @@
+{
+    "name": "Reference",
+    "fields": [
+        {
+            "fieldName": "monthlyFee",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "yearlyFee",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "bookCost",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20201120044018",
+    "entityTableName": "reference",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

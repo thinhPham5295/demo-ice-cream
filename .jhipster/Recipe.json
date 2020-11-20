@@ -1,0 +1,55 @@
+{
+    "name": "Recipe",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "desciption",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "details",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "author",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "viewNumber",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "uploadDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "enableStatus",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "customer",
+            "otherEntityRelationshipName": "recipe",
+            "relationshipName": "customer",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20201120044017",
+    "entityTableName": "recipe",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
