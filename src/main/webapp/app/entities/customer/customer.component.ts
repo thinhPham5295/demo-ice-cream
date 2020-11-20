@@ -29,6 +29,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
   predicate: any;
   previousPage: any;
   reverse: any;
+  search?: string;
 
   constructor(
     protected customerService: CustomerService,
@@ -51,6 +52,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
   loadAll() {
     this.customerService
       .query({
+        searchKey: this.search,
         page: this.page - 1,
         size: this.itemsPerPage,
         sort: this.sort()

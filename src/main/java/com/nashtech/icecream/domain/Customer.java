@@ -32,9 +32,6 @@ public class Customer implements Serializable {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "email")
-    private String email;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
@@ -42,14 +39,11 @@ public class Customer implements Serializable {
     @Column(name = "birthday")
     private LocalDate birthday;
 
-    @Column(name = "avatar")
-    private String avatar;
-
     @Column(name = "expired_date")
     private LocalDate expiredDate;
 
-    @Column(name = "enable_status")
-    private Boolean enableStatus;
+    @OneToOne(mappedBy = "customer")
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -99,19 +93,6 @@ public class Customer implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public Customer email(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Gender getGender() {
         return gender;
     }
@@ -138,19 +119,6 @@ public class Customer implements Serializable {
         this.birthday = birthday;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public Customer avatar(String avatar) {
-        this.avatar = avatar;
-        return this;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
     public LocalDate getExpiredDate() {
         return expiredDate;
     }
@@ -164,19 +132,13 @@ public class Customer implements Serializable {
         this.expiredDate = expiredDate;
     }
 
-    public Boolean isEnableStatus() {
-        return enableStatus;
+    public User getUser() {
+        return user;
     }
 
-    public Customer enableStatus(Boolean enableStatus) {
-        this.enableStatus = enableStatus;
-        return this;
+    public void setUser(User user) {
+        this.user = user;
     }
-
-    public void setEnableStatus(Boolean enableStatus) {
-        this.enableStatus = enableStatus;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {
@@ -201,12 +163,9 @@ public class Customer implements Serializable {
             ", fullName='" + getFullName() + "'" +
             ", address='" + getAddress() + "'" +
             ", phoneNumber='" + getPhoneNumber() + "'" +
-            ", email='" + getEmail() + "'" +
             ", gender='" + getGender() + "'" +
             ", birthday='" + getBirthday() + "'" +
-            ", avatar='" + getAvatar() + "'" +
             ", expiredDate='" + getExpiredDate() + "'" +
-            ", enableStatus='" + isEnableStatus() + "'" +
             "}";
     }
 }

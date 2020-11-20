@@ -7,6 +7,7 @@ export const enum Gender {
 
 export interface ICustomer {
   id?: number;
+  username?: string;
   fullName?: string;
   address?: string;
   phoneNumber?: string;
@@ -21,6 +22,7 @@ export interface ICustomer {
 export class Customer implements ICustomer {
   constructor(
     public id?: number,
+    public username?: string,
     public fullName?: string,
     public address?: string,
     public phoneNumber?: string,

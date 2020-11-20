@@ -3,6 +3,7 @@ package com.nashtech.icecream.web.rest;
 import com.nashtech.icecream.IcecreamApp;
 import com.nashtech.icecream.domain.Customer;
 import com.nashtech.icecream.repository.CustomerRepository;
+import com.nashtech.icecream.service.CustomerService;
 import com.nashtech.icecream.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -67,6 +68,9 @@ public class CustomerResourceIT {
     private CustomerRepository customerRepository;
 
     @Autowired
+    private CustomerService customerService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -88,7 +92,7 @@ public class CustomerResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CustomerResource customerResource = new CustomerResource(customerRepository);
+        final CustomerResource customerResource = new CustomerResource(customerService);
         this.restCustomerMockMvc = MockMvcBuilders.standaloneSetup(customerResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -108,12 +112,9 @@ public class CustomerResourceIT {
             .fullName(DEFAULT_FULL_NAME)
             .address(DEFAULT_ADDRESS)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
-            .email(DEFAULT_EMAIL)
             .gender(DEFAULT_GENDER)
             .birthday(DEFAULT_BIRTHDAY)
-            .avatar(DEFAULT_AVATAR)
-            .expiredDate(DEFAULT_EXPIRED_DATE)
-            .enableStatus(DEFAULT_ENABLE_STATUS);
+            .expiredDate(DEFAULT_EXPIRED_DATE);
         return customer;
     }
     /**
@@ -127,12 +128,9 @@ public class CustomerResourceIT {
             .fullName(UPDATED_FULL_NAME)
             .address(UPDATED_ADDRESS)
             .phoneNumber(UPDATED_PHONE_NUMBER)
-            .email(UPDATED_EMAIL)
             .gender(UPDATED_GENDER)
             .birthday(UPDATED_BIRTHDAY)
-            .avatar(UPDATED_AVATAR)
-            .expiredDate(UPDATED_EXPIRED_DATE)
-            .enableStatus(UPDATED_ENABLE_STATUS);
+            .expiredDate(UPDATED_EXPIRED_DATE);
         return customer;
     }
 
@@ -159,12 +157,9 @@ public class CustomerResourceIT {
         assertThat(testCustomer.getFullName()).isEqualTo(DEFAULT_FULL_NAME);
         assertThat(testCustomer.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testCustomer.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
-        assertThat(testCustomer.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testCustomer.getGender()).isEqualTo(DEFAULT_GENDER);
         assertThat(testCustomer.getBirthday()).isEqualTo(DEFAULT_BIRTHDAY);
-        assertThat(testCustomer.getAvatar()).isEqualTo(DEFAULT_AVATAR);
         assertThat(testCustomer.getExpiredDate()).isEqualTo(DEFAULT_EXPIRED_DATE);
-        assertThat(testCustomer.isEnableStatus()).isEqualTo(DEFAULT_ENABLE_STATUS);
     }
 
     @Test
@@ -208,7 +203,7 @@ public class CustomerResourceIT {
             .andExpect(jsonPath("$.[*].expiredDate").value(hasItem(DEFAULT_EXPIRED_DATE.toString())))
             .andExpect(jsonPath("$.[*].enableStatus").value(hasItem(DEFAULT_ENABLE_STATUS.booleanValue())));
     }
-    
+
     @Test
     @Transactional
     public void getCustomer() throws Exception {
@@ -255,12 +250,9 @@ public class CustomerResourceIT {
             .fullName(UPDATED_FULL_NAME)
             .address(UPDATED_ADDRESS)
             .phoneNumber(UPDATED_PHONE_NUMBER)
-            .email(UPDATED_EMAIL)
             .gender(UPDATED_GENDER)
             .birthday(UPDATED_BIRTHDAY)
-            .avatar(UPDATED_AVATAR)
-            .expiredDate(UPDATED_EXPIRED_DATE)
-            .enableStatus(UPDATED_ENABLE_STATUS);
+            .expiredDate(UPDATED_EXPIRED_DATE);
 
         restCustomerMockMvc.perform(put("/api/customers")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -274,12 +266,9 @@ public class CustomerResourceIT {
         assertThat(testCustomer.getFullName()).isEqualTo(UPDATED_FULL_NAME);
         assertThat(testCustomer.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testCustomer.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
-        assertThat(testCustomer.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testCustomer.getGender()).isEqualTo(UPDATED_GENDER);
         assertThat(testCustomer.getBirthday()).isEqualTo(UPDATED_BIRTHDAY);
-        assertThat(testCustomer.getAvatar()).isEqualTo(UPDATED_AVATAR);
         assertThat(testCustomer.getExpiredDate()).isEqualTo(UPDATED_EXPIRED_DATE);
-        assertThat(testCustomer.isEnableStatus()).isEqualTo(UPDATED_ENABLE_STATUS);
     }
 
     @Test
