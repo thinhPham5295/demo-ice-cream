@@ -33,7 +33,7 @@ export const recipeRoute: Routes = [
     path: '',
     component: RecipeComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Recipes'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const recipeRoute: Routes = [
       recipe: RecipeResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Recipes'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const recipeRoute: Routes = [
       recipe: RecipeResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Recipes'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const recipeRoute: Routes = [
       recipe: RecipeResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Recipes'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const recipePopupRoute: Routes = [
       recipe: RecipeResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Recipes'
     },
     canActivate: [UserRouteAccessService],

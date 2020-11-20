@@ -33,7 +33,7 @@ export const feedbackRoute: Routes = [
     path: '',
     component: FeedbackComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Feedbacks'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const feedbackRoute: Routes = [
       feedback: FeedbackResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Feedbacks'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const feedbackRoute: Routes = [
       feedback: FeedbackResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Feedbacks'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const feedbackRoute: Routes = [
       feedback: FeedbackResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Feedbacks'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const feedbackPopupRoute: Routes = [
       feedback: FeedbackResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Feedbacks'
     },
     canActivate: [UserRouteAccessService],

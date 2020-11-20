@@ -33,7 +33,7 @@ export const prizeHistoryRoute: Routes = [
     path: '',
     component: PrizeHistoryComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'PrizeHistories'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const prizeHistoryRoute: Routes = [
       prizeHistory: PrizeHistoryResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'PrizeHistories'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const prizeHistoryRoute: Routes = [
       prizeHistory: PrizeHistoryResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'PrizeHistories'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const prizeHistoryRoute: Routes = [
       prizeHistory: PrizeHistoryResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'PrizeHistories'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const prizeHistoryPopupRoute: Routes = [
       prizeHistory: PrizeHistoryResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'PrizeHistories'
     },
     canActivate: [UserRouteAccessService],

@@ -37,7 +37,7 @@ export const customerRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       defaultSort: 'id,asc',
       pageTitle: 'Customers'
     },
@@ -50,7 +50,7 @@ export const customerRoute: Routes = [
       customer: CustomerResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Customers'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const customerRoute: Routes = [
       customer: CustomerResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Customers'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const customerRoute: Routes = [
       customer: CustomerResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Customers'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const customerPopupRoute: Routes = [
       customer: CustomerResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'Customers'
     },
     canActivate: [UserRouteAccessService],
