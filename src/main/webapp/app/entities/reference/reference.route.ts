@@ -33,7 +33,7 @@ export const referenceRoute: Routes = [
     path: '',
     component: ReferenceComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'References'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const referenceRoute: Routes = [
       reference: ReferenceResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'References'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const referenceRoute: Routes = [
       reference: ReferenceResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'References'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const referenceRoute: Routes = [
       reference: ReferenceResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'References'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const referencePopupRoute: Routes = [
       reference: ReferenceResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'References'
     },
     canActivate: [UserRouteAccessService],

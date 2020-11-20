@@ -33,7 +33,7 @@ export const fAQRoute: Routes = [
     path: '',
     component: FAQComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'FAQS'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const fAQRoute: Routes = [
       fAQ: FAQResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'FAQS'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const fAQRoute: Routes = [
       fAQ: FAQResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'FAQS'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const fAQRoute: Routes = [
       fAQ: FAQResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'FAQS'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const fAQPopupRoute: Routes = [
       fAQ: FAQResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'FAQS'
     },
     canActivate: [UserRouteAccessService],

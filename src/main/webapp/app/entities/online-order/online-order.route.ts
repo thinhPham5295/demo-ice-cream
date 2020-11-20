@@ -33,7 +33,7 @@ export const onlineOrderRoute: Routes = [
     path: '',
     component: OnlineOrderComponent,
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'OnlineOrders'
     },
     canActivate: [UserRouteAccessService]
@@ -45,7 +45,7 @@ export const onlineOrderRoute: Routes = [
       onlineOrder: OnlineOrderResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'OnlineOrders'
     },
     canActivate: [UserRouteAccessService]
@@ -57,7 +57,7 @@ export const onlineOrderRoute: Routes = [
       onlineOrder: OnlineOrderResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'OnlineOrders'
     },
     canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const onlineOrderRoute: Routes = [
       onlineOrder: OnlineOrderResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'OnlineOrders'
     },
     canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const onlineOrderPopupRoute: Routes = [
       onlineOrder: OnlineOrderResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CUSTOMER'],
       pageTitle: 'OnlineOrders'
     },
     canActivate: [UserRouteAccessService],
