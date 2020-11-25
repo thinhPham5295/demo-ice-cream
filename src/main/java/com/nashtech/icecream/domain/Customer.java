@@ -42,7 +42,7 @@ public class Customer implements Serializable {
     @Column(name = "expired_date")
     private LocalDate expiredDate;
 
-    @OneToOne(mappedBy = "customer")
+    @OneToOne(mappedBy = "customer", fetch = FetchType.EAGER)
     private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

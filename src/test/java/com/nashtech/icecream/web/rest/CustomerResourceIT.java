@@ -4,6 +4,7 @@ import com.nashtech.icecream.IcecreamApp;
 import com.nashtech.icecream.domain.Customer;
 import com.nashtech.icecream.repository.CustomerRepository;
 import com.nashtech.icecream.service.CustomerService;
+import com.nashtech.icecream.service.UserService;
 import com.nashtech.icecream.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -71,6 +72,9 @@ public class CustomerResourceIT {
     private CustomerService customerService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -92,7 +96,7 @@ public class CustomerResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CustomerResource customerResource = new CustomerResource(customerService);
+        final CustomerResource customerResource = new CustomerResource(userService);
         this.restCustomerMockMvc = MockMvcBuilders.standaloneSetup(customerResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

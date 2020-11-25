@@ -1,3 +1,6 @@
+import { Moment } from 'moment';
+import { Gender } from 'app/shared/model/customer.model';
+
 export interface IUser {
   id?: any;
   login?: string;
@@ -12,6 +15,13 @@ export interface IUser {
   lastModifiedBy?: string;
   lastModifiedDate?: Date;
   password?: string;
+  fullName?: string;
+  address?: string;
+  phoneNumber?: string;
+  gender?: Gender;
+  birthday?: Moment;
+  avatar?: string;
+  expiredDate?: Moment;
 }
 
 export class User implements IUser {
@@ -28,7 +38,14 @@ export class User implements IUser {
     public createdDate?: Date,
     public lastModifiedBy?: string,
     public lastModifiedDate?: Date,
-    public password?: string
+    public password?: string,
+    public fullName?: string,
+    public address?: string,
+    public phoneNumber?: string,
+    public gender?: Gender,
+    public birthday?: Moment,
+    public avatar?: string,
+    public expiredDate?: Moment
   ) {
     this.id = id ? id : null;
     this.login = login ? login : null;

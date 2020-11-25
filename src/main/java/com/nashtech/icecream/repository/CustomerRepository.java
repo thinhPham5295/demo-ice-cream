@@ -20,4 +20,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
         "where (:searchKey is null or lower(u.login) like lower(concat('%',:searchKey,'%')))" +
         "and u.activated = true")
     Page<Customer> findByUsername(@Param("searchKey") String searchKey, Pageable pageable);
+
 }

@@ -9,7 +9,7 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IRecipe, Recipe } from 'app/shared/model/recipe.model';
 import { RecipeService } from './recipe.service';
 import { ICustomer } from 'app/shared/model/customer.model';
-import { CustomerService } from 'app/entities/customer';
+import { CustomerService } from 'app/entities/customer/customer.service';
 
 @Component({
   selector: 'jhi-recipe-update',

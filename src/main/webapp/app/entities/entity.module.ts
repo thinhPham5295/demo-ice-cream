@@ -5,10 +5,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     RouterModule.forChild([
       {
-        path: 'customer',
-        loadChildren: './customer/customer.module#IcecreamCustomerModule'
-      },
-      {
         path: 'faq',
         loadChildren: './faq/faq.module#IcecreamFAQModule'
       },
