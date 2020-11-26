@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
-import { IUser } from './user.model';
+import { IUser, User } from './user.model';
+import { ICustomer } from 'app/shared/model/customer.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -24,9 +25,9 @@ export class UserService {
     return this.http.get<IUser>(`${this.resourceUrl}/${login}`, { observe: 'response' });
   }
 
-  query(req?: any): Observable<HttpResponse<IUser[]>> {
+  query(req?: any): Observable<HttpResponse<User[]>> {
     const options = createRequestOption(req);
-    return this.http.get<IUser[]>(this.resourceUrl, { params: options, observe: 'response' });
+    return this.http.get<User[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
 
   delete(login: string): Observable<HttpResponse<any>> {

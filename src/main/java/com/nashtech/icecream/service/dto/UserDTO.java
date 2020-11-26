@@ -3,13 +3,16 @@ package com.nashtech.icecream.service.dto;
 import com.nashtech.icecream.config.Constants;
 
 import com.nashtech.icecream.domain.Authority;
+import com.nashtech.icecream.domain.Customer;
 import com.nashtech.icecream.domain.User;
+import com.nashtech.icecream.domain.enumeration.Gender;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import javax.validation.constraints.*;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -33,6 +36,7 @@ public class UserDTO {
 
     @Email
     @Size(min = 5, max = 254)
+    @NotBlank
     private String email;
 
     @Size(max = 256)
@@ -52,6 +56,20 @@ public class UserDTO {
     private Instant lastModifiedDate;
 
     private Set<String> authorities;
+
+    @Size(max = 255)
+    private String fullName;
+
+    @Size(max = 255)
+    private String address;
+
+    private String phoneNumber;
+
+    private Gender gender;
+
+    private LocalDate birthday;
+
+    private LocalDate expiredDate;
 
     public UserDTO() {
         // Empty constructor needed for Jackson.
@@ -73,6 +91,11 @@ public class UserDTO {
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
             .collect(Collectors.toSet());
+        Customer customer = user.getCustomer();
+        if( customer!= null){
+            this.expiredDate = customer.getExpiredDate();
+            this.fullName = customer.getFullName();
+        }
     }
 
     public Long getId() {
@@ -177,6 +200,54 @@ public class UserDTO {
 
     public void setAuthorities(Set<String> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setExpiredDate(LocalDate expiredDate) {
+        this.expiredDate = expiredDate;
+    }
+
+    public LocalDate getExpiredDate() {
+        return expiredDate;
     }
 
     @Override

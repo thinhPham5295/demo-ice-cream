@@ -2,6 +2,7 @@ package com.nashtech.icecream.service;
 
 import com.nashtech.icecream.config.Constants;
 import com.nashtech.icecream.domain.Authority;
+import com.nashtech.icecream.domain.Customer;
 import com.nashtech.icecream.domain.User;
 import com.nashtech.icecream.repository.AuthorityRepository;
 import com.nashtech.icecream.repository.UserRepository;
@@ -22,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -117,6 +119,15 @@ public class UserService {
         Set<Authority> authorities = new HashSet<>();
         authorityRepository.findById(AuthoritiesConstants.CUSTOMER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
+        Customer customer = new Customer();
+        customer.setAddress(userDTO.getAddress());
+        customer.setBirthday(userDTO.getBirthday());
+        customer.setFullName(userDTO.getFullName());
+        customer.setGender(userDTO.getGender());
+        customer.setPhoneNumber(userDTO.getPhoneNumber());
+        LocalDate expiredDate = LocalDate.now().plusYears(1);
+        customer.setExpiredDate(expiredDate);
+        newUser.setCustomer(customer);
         userRepository.save(newUser);
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);
@@ -292,5 +303,9 @@ public class UserService {
     private void clearUserCaches(User user) {
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE)).evict(user.getLogin());
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
+    }
+
+    public Page<UserDTO> searchByLogin(String searchKey, Pageable pageable) {
+        return userRepository.searchByUserName(searchKey, pageable).map(UserDTO::new);
     }
 }

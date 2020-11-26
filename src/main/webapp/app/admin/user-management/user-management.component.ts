@@ -1,13 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiEventManager, JhiParseLinks } from 'ng-jhipster';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
-import { AccountService, UserService, User } from 'app/core';
-import { UserMgmtDeleteDialogComponent } from './user-management-delete-dialog.component';
+import { AccountService, User, UserService } from 'app/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'jhi-user-mgmt',
@@ -26,16 +25,19 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
   predicate: any;
   previousPage: any;
   reverse: any;
+  searchForm = this.fb.group({
+    searchKey: ['', [Validators.maxLength(255)]]
+  });
 
   constructor(
+    private fb: FormBuilder,
     private userService: UserService,
     private alertService: JhiAlertService,
     private accountService: AccountService,
     private parseLinks: JhiParseLinks,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private eventManager: JhiEventManager,
-    private modalService: NgbModal
+    private eventManager: JhiEventManager
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -64,7 +66,6 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
 
   setActive(user, isActivated) {
     user.activated = isActivated;
-
     this.userService.update(user).subscribe(response => {
       if (response.status === 200) {
         this.error = null;
@@ -80,6 +81,7 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
   loadAll() {
     this.userService
       .query({
+        searchKey: this.searchForm.get(['searchKey']).value,
         page: this.page - 1,
         size: this.itemsPerPage,
         sort: this.sort()
@@ -109,24 +111,12 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
   transition() {
     this.router.navigate(['/admin/user-management'], {
       queryParams: {
+        searchKey: this.searchForm.get(['searchKey']).value,
         page: this.page,
         sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
       }
     });
     this.loadAll();
-  }
-
-  deleteUser(user: User) {
-    const modalRef = this.modalService.open(UserMgmtDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.user = user;
-    modalRef.result.then(
-      result => {
-        // Left blank intentionally, nothing to do here
-      },
-      reason => {
-        // Left blank intentionally, nothing to do here
-      }
-    );
   }
 
   private onSuccess(data, headers) {

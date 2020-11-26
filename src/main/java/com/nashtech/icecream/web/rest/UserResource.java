@@ -1,11 +1,14 @@
 package com.nashtech.icecream.web.rest;
 
 import com.nashtech.icecream.config.Constants;
+import com.nashtech.icecream.domain.Customer;
 import com.nashtech.icecream.domain.User;
 import com.nashtech.icecream.repository.UserRepository;
 import com.nashtech.icecream.security.AuthoritiesConstants;
+import com.nashtech.icecream.service.CustomerService;
 import com.nashtech.icecream.service.MailService;
 import com.nashtech.icecream.service.UserService;
+import com.nashtech.icecream.service.dto.CustomerDTO;
 import com.nashtech.icecream.service.dto.UserDTO;
 import com.nashtech.icecream.web.rest.errors.BadRequestAlertException;
 import com.nashtech.icecream.web.rest.errors.EmailAlreadyUsedException;
@@ -17,6 +20,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +30,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -71,6 +76,9 @@ public class UserResource {
     private final UserRepository userRepository;
 
     private final MailService mailService;
+
+    @Autowired
+    private CustomerService customerService;
 
     public UserResource(UserService userService, UserRepository userRepository, MailService mailService) {
 
@@ -141,15 +149,14 @@ public class UserResource {
     /**
      * {@code GET /users} : get all users.
      *
-     * @param queryParams a {@link MultiValueMap} query parameters.
-     * @param uriBuilder a {@link UriComponentsBuilder} URI builder.
+     * @param searchKey a search key.
      * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body all users.
      */
     @GetMapping("/users")
-    public ResponseEntity<List<UserDTO>> getAllUsers(@RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder, Pageable pageable) {
-        final Page<UserDTO> page = userService.getAllManagedUsers(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
+    public ResponseEntity<List<UserDTO>> getAllUsers(@RequestParam String searchKey,Pageable pageable) {
+        final Page<UserDTO> page = userService.searchByLogin(searchKey, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

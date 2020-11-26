@@ -4,7 +4,6 @@ import { JhiPaginationUtil, JhiResolvePagingParams } from 'ng-jhipster';
 
 import { AccountService, User, UserService } from 'app/core';
 import { UserMgmtComponent } from './user-management.component';
-import { UserMgmtDetailComponent } from './user-management-detail.component';
 import { UserMgmtUpdateComponent } from './user-management-update.component';
 
 @Injectable({ providedIn: 'root' })
@@ -39,16 +38,6 @@ export const userMgmtRoute: Routes = [
     data: {
       pageTitle: 'Users',
       defaultSort: 'id,asc'
-    }
-  },
-  {
-    path: 'user-management/:login/view',
-    component: UserMgmtDetailComponent,
-    resolve: {
-      user: UserMgmtResolve
-    },
-    data: {
-      pageTitle: 'Users'
     }
   },
   {

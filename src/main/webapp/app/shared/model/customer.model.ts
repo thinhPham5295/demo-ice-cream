@@ -1,12 +1,13 @@
 import { Moment } from 'moment';
 
-export const enum Gender {
+export enum Gender {
   MALE = 'MALE',
   FEMALE = 'FEMALE'
 }
 
 export interface ICustomer {
   id?: number;
+  login?: string;
   fullName?: string;
   address?: string;
   phoneNumber?: string;
@@ -15,12 +16,13 @@ export interface ICustomer {
   birthday?: Moment;
   avatar?: string;
   expiredDate?: Moment;
-  enableStatus?: boolean;
+  activated?: boolean;
 }
 
 export class Customer implements ICustomer {
   constructor(
     public id?: number,
+    public login?: string,
     public fullName?: string,
     public address?: string,
     public phoneNumber?: string,
@@ -29,8 +31,8 @@ export class Customer implements ICustomer {
     public birthday?: Moment,
     public avatar?: string,
     public expiredDate?: Moment,
-    public enableStatus?: boolean
+    public activated?: boolean
   ) {
-    this.enableStatus = this.enableStatus || false;
+    this.activated = this.activated || false;
   }
 }
