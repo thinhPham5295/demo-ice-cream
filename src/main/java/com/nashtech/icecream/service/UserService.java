@@ -225,6 +225,16 @@ public class UserService {
                     .filter(Optional::isPresent)
                     .map(Optional::get)
                     .forEach(managedAuthorities::add);
+                Customer customer = user.getCustomer();
+                if (customer != null){
+                    customer.setFullName(userDTO.getFullName());
+                    customer.setAddress(userDTO.getAddress());
+                    customer.setPhoneNumber(userDTO.getPhoneNumber());
+                    customer.setGender(userDTO.getGender());
+                    customer.setBirthday(userDTO.getBirthday());
+                    customer.plusExpiredDate(userDTO.getExpiredDateStatus());
+                }
+                user.setCustomer(customer);
                 this.clearUserCaches(user);
                 log.debug("Changed Information for User: {}", user);
                 return user;

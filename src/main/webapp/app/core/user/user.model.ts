@@ -1,5 +1,6 @@
 import { Moment } from 'moment';
 import { Gender } from 'app/shared/model/customer.model';
+import { ExpiredStatus } from 'app/shared/model/enumeration/expired-status.model';
 
 export interface IUser {
   id?: any;
@@ -22,6 +23,7 @@ export interface IUser {
   birthday?: Moment;
   avatar?: string;
   expiredDate?: Moment;
+  expiredDateStatus?: ExpiredStatus;
 }
 
 export class User implements IUser {
@@ -45,7 +47,8 @@ export class User implements IUser {
     public gender?: Gender,
     public birthday?: Moment,
     public avatar?: string,
-    public expiredDate?: Moment
+    public expiredDate?: Moment,
+    public expiredDateStatus?: ExpiredStatus
   ) {
     this.id = id ? id : null;
     this.login = login ? login : null;
