@@ -5,6 +5,7 @@ import com.nashtech.icecream.config.Constants;
 import com.nashtech.icecream.domain.Authority;
 import com.nashtech.icecream.domain.Customer;
 import com.nashtech.icecream.domain.User;
+import com.nashtech.icecream.domain.enumeration.ExpiredDateStatus;
 import com.nashtech.icecream.domain.enumeration.Gender;
 
 import javax.validation.constraints.Email;
@@ -70,6 +71,8 @@ public class UserDTO {
     private LocalDate birthday;
 
     private LocalDate expiredDate;
+
+    private ExpiredDateStatus expiredDateStatus;
 
     public UserDTO() {
         // Empty constructor needed for Jackson.
@@ -248,6 +251,14 @@ public class UserDTO {
 
     public LocalDate getExpiredDate() {
         return expiredDate;
+    }
+
+    public ExpiredDateStatus getExpiredDateStatus() {
+        return expiredDateStatus;
+    }
+
+    public void setExpiredDateStatus(ExpiredDateStatus expiredDateStatus) {
+        this.expiredDateStatus = expiredDateStatus;
     }
 
     @Override

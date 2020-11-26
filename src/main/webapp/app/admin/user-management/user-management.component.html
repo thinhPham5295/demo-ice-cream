@@ -1,6 +1,6 @@
 <div>
     <h2>
-        <span id="user-management-page-heading">Users</span>
+        <span id="user-management-page-heading">Customers</span>
         <div class="float-right">
             <div class="col-md-auto col">
                 <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm" (ngSubmit)="loadAll()">
@@ -40,7 +40,7 @@
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"
-                                [routerLink]="['/user-management', user.login, 'edit']"
+                                [routerLink]="['./', user.login, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline">Edit</span>

@@ -1,4 +1,5 @@
 package com.nashtech.icecream.domain;
+import com.nashtech.icecream.domain.enumeration.ExpiredDateStatus;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -167,5 +168,13 @@ public class Customer implements Serializable {
             ", birthday='" + getBirthday() + "'" +
             ", expiredDate='" + getExpiredDate() + "'" +
             "}";
+    }
+
+    public void plusExpiredDate(ExpiredDateStatus expiredDateStatus) {
+        if (ExpiredDateStatus.MONTHLY.equals(expiredDateStatus)){
+            this.expiredDate = this.expiredDate.plusMonths(1);
+        } else if (ExpiredDateStatus.YEARLY.equals(expiredDateStatus)) {
+            this.expiredDate = this.expiredDate.plusYears(1);
+        }
     }
 }

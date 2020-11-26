@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { User, UserService } from 'app/core';
+import { ExpiredStatus } from 'app/shared/model/enumeration/expired-status.model';
 
 @Component({
   selector: 'jhi-user-mgmt-update',
@@ -15,15 +16,18 @@ export class UserMgmtUpdateComponent implements OnInit {
   isSaving: boolean;
 
   editForm = this.fb.group({
-    id: [null],
-    login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[_.@A-Za-z0-9-]*')]],
-    firstName: ['', [Validators.maxLength(50)]],
-    lastName: ['', [Validators.maxLength(50)]],
-    email: ['', [Validators.minLength(5), Validators.maxLength(254), Validators.email]],
-    activated: [true],
-    langKey: [],
-    authorities: []
+    login: [],
+    email: [],
+    fullName: [],
+    address: [],
+    phoneNumber: [],
+    birthDay: [],
+    gender: [],
+    avatar: [],
+    expiredDate: [],
+    expiredDateStatus: []
   });
+  expiredStatus = Object.keys(ExpiredStatus);
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {}
 
@@ -43,12 +47,17 @@ export class UserMgmtUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: user.id,
       login: user.login,
-      firstName: user.firstName,
-      lastName: user.lastName,
       email: user.email,
       activated: user.activated,
-      langKey: user.langKey,
-      authorities: user.authorities
+      authorities: user.authorities,
+      fullName: user.fullName,
+      address: user.address,
+      phoneNumber: user.phoneNumber,
+      birthDay: user.birthday,
+      gender: user.gender,
+      avatar: user.avatar,
+      expiredDate: user.expiredDate,
+      expiredDateStatus: user.expiredDateStatus
     });
   }
 
@@ -68,13 +77,10 @@ export class UserMgmtUpdateComponent implements OnInit {
   }
 
   private updateUser(user: User): void {
-    user.login = this.editForm.get(['login']).value;
-    user.firstName = this.editForm.get(['firstName']).value;
-    user.lastName = this.editForm.get(['lastName']).value;
-    user.email = this.editForm.get(['email']).value;
-    user.activated = this.editForm.get(['activated']).value;
-    user.langKey = this.editForm.get(['langKey']).value;
-    user.authorities = this.editForm.get(['authorities']).value;
+    user.activated = this.editForm.get(['activated']) ? this.editForm.get(['activated']).value : user.activated;
+    user.expiredDateStatus = this.editForm.get(['expiredDateStatus'])
+      ? this.editForm.get(['expiredDateStatus']).value
+      : user.expiredDateStatus;
   }
 
   private onSaveSuccess(result) {
