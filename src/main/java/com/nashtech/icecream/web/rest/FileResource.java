@@ -17,7 +17,7 @@ public class FileResource {
     private FileService fileService;
 
     @PostMapping("/v1/files/upload")
-    public ResponseEntity<String> uploadFile(@RequestPart(value = "file", required = true) MultipartFile file) {
+    public ResponseEntity<String> uploadFile(@RequestPart(value = "file") MultipartFile file) {
         log.debug("REST request to upload file MedicalService : {}");
         String path = fileService.uploadFile(file);
         return ResponseEntity.ok().body(path);

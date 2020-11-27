@@ -67,11 +67,20 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       this.errorUserExists = null;
       this.errorEmailExists = null;
       let registerAccount = this.createRegisterAccount();
-      this.registerService.save(registerAccount).subscribe(
-        () => {
-          this.success = true;
+      this.fileService.uploadImageCommon(this.fileToUpload).subscribe(
+        res => {
+          if (res && res.body) {
+            const imageUrl = res;
+            registerAccount = { ...registerAccount, imageUrl };
+            this.registerService.save(registerAccount).subscribe(
+              () => {
+                this.success = true;
+              },
+              response => this.processError(response)
+            );
+          }
         },
-        response => this.processError(response)
+        () => {}
       );
     }
   }
