@@ -22,7 +22,13 @@
                     <span>Customer</span>
                 </a>
             </li>
-            <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_CUSTOMER']">
+            <li *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                <a class="nav-link" routerLink="admin/recipe-management" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                    <fa-icon icon="book" fixedWidth="true"></fa-icon>
+                    <span>Recipe</span>
+                </a>
+            </li>
+            <li *jhiHasAnyAuthority="['ROLE_CUSTOMER']">
                 <a class="nav-link" routerLink="recipe" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                     <fa-icon icon="book" fixedWidth="true"></fa-icon>
                     <span>Recipe</span>
