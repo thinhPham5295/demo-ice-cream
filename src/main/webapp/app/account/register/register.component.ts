@@ -3,7 +3,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
-import { DATE_PATTERN, EMAIL_ALREADY_USED_TYPE, IMAGE_UPLOAD_URL, LOGIN_ALREADY_USED_TYPE, PHONE_PATTERN } from 'app/shared';
+import { DATE_PATTERN, EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE, PHONE_PATTERN } from 'app/shared';
 import { LoginModalService } from 'app/core';
 import { Register } from './register.service';
 import * as moment from 'moment';
@@ -70,17 +70,21 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       this.fileService.uploadImageCommon(this.fileToUpload).subscribe(
         res => {
           if (res && res.body) {
-            const imageUrl = res;
+            const imageUrl = res.body.name;
             registerAccount = { ...registerAccount, imageUrl };
-            this.registerService.save(registerAccount).subscribe(
-              () => {
-                this.success = true;
-              },
-              response => this.processError(response)
-            );
           }
         },
-        () => {}
+        err => {
+          console.log(err);
+        },
+        () => {
+          this.registerService.save(registerAccount).subscribe(
+            () => {
+              this.success = true;
+            },
+            response => this.processError(response)
+          );
+        }
       );
     }
   }
@@ -94,8 +98,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     const address = this.registerForm.get(['address']).value;
     const phoneNumber = this.registerForm.get(['phoneNumber']).value;
     const gender = this.registerForm.get(['gender']).value;
-    const imageUrl = IMAGE_UPLOAD_URL + this.fileToUpload.name;
-    registerAccount = { ...registerAccount, login, email, password, fullName, address, phoneNumber, gender, imageUrl };
+    registerAccount = { ...registerAccount, login, email, password, fullName, address, phoneNumber, gender };
     registerAccount = { ...registerAccount, langKey: 'en' };
     return registerAccount;
   }

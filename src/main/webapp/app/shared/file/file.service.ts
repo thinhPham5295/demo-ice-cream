@@ -3,6 +3,10 @@ import { SERVER_API_URL } from 'app/app.constants';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { EMPTY, Observable } from 'rxjs';
 
+class IImage {
+  name: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,11 +15,11 @@ export class FileService {
 
   constructor(private http: HttpClient) {}
 
-  uploadImageCommon(fileUpload: File | undefined): Observable<HttpResponse<String>> {
+  uploadImageCommon(fileUpload: File | undefined): Observable<HttpResponse<IImage>> {
     if (fileUpload) {
       const file: FormData = new FormData();
       file.append('file', fileUpload, fileUpload.name);
-      return this.http.post<String>(this.resourceUploadUrl, file, { observe: 'response' });
+      return this.http.post<IImage>(this.resourceUploadUrl, file, { observe: 'response' });
     } else {
       return EMPTY;
     }
