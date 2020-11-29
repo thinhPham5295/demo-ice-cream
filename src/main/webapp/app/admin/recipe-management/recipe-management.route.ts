@@ -7,6 +7,7 @@ import { RecipeService } from 'app/entities/recipe';
 import { Recipe } from 'app/shared/model/recipe.model';
 import { RecipeMgmtComponent } from 'app/admin/recipe-management/recipe-management.component';
 import { RecipeMgmtPreviewComponent } from 'app/admin/recipe-management/recipe-management-preview/recipe-management-preview.component';
+import { RecipeMgmtUpdateComponent } from 'app/admin/recipe-management/recipe-management-update/recipe-management-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class recipeResolve implements CanActivate {
@@ -45,6 +46,13 @@ export const recipeMgmtRoute: Routes = [
   {
     path: 'recipe-management/:id/view',
     component: RecipeMgmtPreviewComponent,
+    resolve: {
+      recipe: RecipeMgmtResolve
+    }
+  },
+  {
+    path: 'recipe-management/:id/new',
+    component: RecipeMgmtUpdateComponent,
     resolve: {
       recipe: RecipeMgmtResolve
     }
