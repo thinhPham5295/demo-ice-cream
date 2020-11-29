@@ -106,7 +106,7 @@ public class RecipeResource {
      * @param id the id of the recipe to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the recipe, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/recipes/{id}")
+    @GetMapping("/v1/recipes/{id}")
     public ResponseEntity<Recipe> getRecipe(@PathVariable Long id) {
         log.debug("REST request to get Recipe : {}", id);
         Optional<Recipe> recipe = recipeRepository.findById(id);

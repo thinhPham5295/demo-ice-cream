@@ -41,13 +41,6 @@ export const userMgmtRoute: Routes = [
     }
   },
   {
-    path: 'user-management/new',
-    component: UserMgmtUpdateComponent,
-    resolve: {
-      user: UserMgmtResolve
-    }
-  },
-  {
     path: 'user-management/:login/edit',
     component: UserMgmtUpdateComponent,
     resolve: {
