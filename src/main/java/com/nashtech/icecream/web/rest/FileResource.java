@@ -1,6 +1,7 @@
 package com.nashtech.icecream.web.rest;
 
 import com.nashtech.icecream.service.FileService;
+import com.nashtech.icecream.service.dto.ImageDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,11 @@ public class FileResource {
     private FileService fileService;
 
     @PostMapping("/v1/files/upload")
-    public ResponseEntity<String> uploadFile(@RequestPart(value = "file", required = true) MultipartFile file) {
+    public ResponseEntity<ImageDTO> uploadFile(@RequestPart(value = "file") MultipartFile file) {
         log.debug("REST request to upload file MedicalService : {}");
         String path = fileService.uploadFile(file);
-        return ResponseEntity.ok().body(path);
+        ImageDTO imageDTO = new ImageDTO();
+        imageDTO.setName(path);
+        return ResponseEntity.ok().body(imageDTO);
     }
 }

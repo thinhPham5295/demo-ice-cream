@@ -1,5 +1,6 @@
 package com.nashtech.icecream.service.util;
 
+import com.nashtech.icecream.config.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,8 +15,7 @@ public class FileUtil {
 
     private static FileUtil instance = null;
 
-    private String uploadFolder = System.getProperty("user.dir") + "\\src\\main\\webapp\\content\\images\\upload\\";
-//    private String uploadFolder = "\\content\\images\\upload\\";
+    private String uploadFolder = Constants.DOWNLOAD_IMAGE_URL;
 
     public static FileUtil getInstance() {
         if (instance == null) {
