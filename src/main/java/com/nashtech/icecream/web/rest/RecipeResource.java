@@ -2,19 +2,25 @@ package com.nashtech.icecream.web.rest;
 
 import com.nashtech.icecream.domain.Recipe;
 import com.nashtech.icecream.repository.RecipeRepository;
+import com.nashtech.icecream.service.RecipeService;
 import com.nashtech.icecream.web.rest.errors.BadRequestAlertException;
-
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +39,9 @@ public class RecipeResource {
     private String applicationName;
 
     private final RecipeRepository recipeRepository;
+
+    @Autowired
+    private RecipeService recipeService;
 
     public RecipeResource(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
@@ -66,11 +75,11 @@ public class RecipeResource {
      * or with status {@code 500 (Internal Server Error)} if the recipe couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PutMapping("/recipes")
+    @PutMapping("/v1/recipes")
     public ResponseEntity<Recipe> updateRecipe(@RequestBody Recipe recipe) throws URISyntaxException {
         log.debug("REST request to update Recipe : {}", recipe);
         if (recipe.getId() == null) {
-            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "id null");
         }
         Recipe result = recipeRepository.save(recipe);
         return ResponseEntity.ok()
@@ -83,10 +92,12 @@ public class RecipeResource {
      *
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of recipes in body.
      */
-    @GetMapping("/recipes")
-    public List<Recipe> getAllRecipes() {
+    @GetMapping("/v1/recipes")
+    public ResponseEntity<List<Recipe>> getAllRecipes(Pageable pageable) {
         log.debug("REST request to get all Recipes");
-        return recipeRepository.findAll();
+        Page<Recipe> recipes = recipeService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), recipes);
+        return new ResponseEntity<>(recipes.getContent(), headers, HttpStatus.OK);
     }
 
     /**
@@ -95,7 +106,7 @@ public class RecipeResource {
      * @param id the id of the recipe to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the recipe, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/recipes/{id}")
+    @GetMapping("/v1/recipes/{id}")
     public ResponseEntity<Recipe> getRecipe(@PathVariable Long id) {
         log.debug("REST request to get Recipe : {}", id);
         Optional<Recipe> recipe = recipeRepository.findById(id);

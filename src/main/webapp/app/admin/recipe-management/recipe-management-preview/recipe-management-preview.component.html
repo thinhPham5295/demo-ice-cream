@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="bg-white p-5 m-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1>Recipe preview {{recipe.name}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <img [width]="300" [height]="200"
+                     [src]="recipe.image || '/content/images/jhipster_family_member_3.svg'" alt="recipe image">
+                <span>{{recipe.viewNumber}}</span>
+            </div>
+            <div class="col-sm-7">
+                {{recipe.desciption}}
+            </div>
+        </div>
+        <div class="row pt-5">
+            <div class="col-sm-11"></div>
+            {{recipe.details}}
+        </div>
+        <div class="pt-5">
+            <button type="button" class="btn btn-secondary" (click)="previousState()">
+                <span>Back</span>
+            </button>
+        </div>
+    </div>
+</div>
