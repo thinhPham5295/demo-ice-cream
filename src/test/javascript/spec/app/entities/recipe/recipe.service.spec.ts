@@ -76,7 +76,7 @@ describe('Service Tests', () => {
           {
             name: 'BBBBBB',
             image: 'BBBBBB',
-            desciption: 'BBBBBB',
+            description: 'BBBBBB',
             details: 'BBBBBB',
             author: 'BBBBBB',
             viewNumber: 1,
@@ -106,7 +106,7 @@ describe('Service Tests', () => {
           {
             name: 'BBBBBB',
             image: 'BBBBBB',
-            desciption: 'BBBBBB',
+            description: 'BBBBBB',
             details: 'BBBBBB',
             author: 'BBBBBB',
             viewNumber: 1,

@@ -28,8 +28,8 @@ public class Recipe implements Serializable {
     @Column(name = "image")
     private String image;
 
-    @Column(name = "desciption")
-    private String desciption;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "details")
     private String details;
@@ -85,17 +85,17 @@ public class Recipe implements Serializable {
         this.image = image;
     }
 
-    public String getDesciption() {
-        return desciption;
+    public String getdescription() {
+        return description;
     }
 
-    public Recipe desciption(String desciption) {
-        this.desciption = desciption;
+    public Recipe description(String description) {
+        this.description = description;
         return this;
     }
 
-    public void setDesciption(String desciption) {
-        this.desciption = desciption;
+    public void setdescription(String description) {
+        this.description = description;
     }
 
     public String getDetails() {
@@ -199,7 +199,7 @@ public class Recipe implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", image='" + getImage() + "'" +
-            ", desciption='" + getDesciption() + "'" +
+            ", description='" + getdescription() + "'" +
             ", details='" + getDetails() + "'" +
             ", author='" + getAuthor() + "'" +
             ", viewNumber=" + getViewNumber() +

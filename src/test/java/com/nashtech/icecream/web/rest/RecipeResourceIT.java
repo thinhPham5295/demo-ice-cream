@@ -41,8 +41,8 @@ public class RecipeResourceIT {
     private static final String DEFAULT_IMAGE = "AAAAAAAAAA";
     private static final String UPDATED_IMAGE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DESCIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCIPTION = "BBBBBBBBBB";
+    private static final String DEFAULT_description = "AAAAAAAAAA";
+    private static final String UPDATED_description = "BBBBBBBBBB";
 
     private static final String DEFAULT_DETAILS = "AAAAAAAAAA";
     private static final String UPDATED_DETAILS = "BBBBBBBBBB";
@@ -103,7 +103,7 @@ public class RecipeResourceIT {
         Recipe recipe = new Recipe()
             .name(DEFAULT_NAME)
             .image(DEFAULT_IMAGE)
-            .desciption(DEFAULT_DESCIPTION)
+            .description(DEFAULT_description)
             .details(DEFAULT_DETAILS)
             .author(DEFAULT_AUTHOR)
             .viewNumber(DEFAULT_VIEW_NUMBER)
@@ -121,7 +121,7 @@ public class RecipeResourceIT {
         Recipe recipe = new Recipe()
             .name(UPDATED_NAME)
             .image(UPDATED_IMAGE)
-            .desciption(UPDATED_DESCIPTION)
+            .description(UPDATED_description)
             .details(UPDATED_DETAILS)
             .author(UPDATED_AUTHOR)
             .viewNumber(UPDATED_VIEW_NUMBER)
@@ -152,7 +152,7 @@ public class RecipeResourceIT {
         Recipe testRecipe = recipeList.get(recipeList.size() - 1);
         assertThat(testRecipe.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testRecipe.getImage()).isEqualTo(DEFAULT_IMAGE);
-        assertThat(testRecipe.getDesciption()).isEqualTo(DEFAULT_DESCIPTION);
+        assertThat(testRecipe.getdescription()).isEqualTo(DEFAULT_description);
         assertThat(testRecipe.getDetails()).isEqualTo(DEFAULT_DETAILS);
         assertThat(testRecipe.getAuthor()).isEqualTo(DEFAULT_AUTHOR);
         assertThat(testRecipe.getViewNumber()).isEqualTo(DEFAULT_VIEW_NUMBER);
@@ -193,14 +193,14 @@ public class RecipeResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(recipe.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
-            .andExpect(jsonPath("$.[*].desciption").value(hasItem(DEFAULT_DESCIPTION.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_description.toString())))
             .andExpect(jsonPath("$.[*].details").value(hasItem(DEFAULT_DETAILS.toString())))
             .andExpect(jsonPath("$.[*].author").value(hasItem(DEFAULT_AUTHOR.toString())))
             .andExpect(jsonPath("$.[*].viewNumber").value(hasItem(DEFAULT_VIEW_NUMBER.intValue())))
             .andExpect(jsonPath("$.[*].uploadDate").value(hasItem(DEFAULT_UPLOAD_DATE.toString())))
             .andExpect(jsonPath("$.[*].enableStatus").value(hasItem(DEFAULT_ENABLE_STATUS.booleanValue())));
     }
-    
+
     @Test
     @Transactional
     public void getRecipe() throws Exception {
@@ -214,7 +214,7 @@ public class RecipeResourceIT {
             .andExpect(jsonPath("$.id").value(recipe.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE.toString()))
-            .andExpect(jsonPath("$.desciption").value(DEFAULT_DESCIPTION.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_description.toString()))
             .andExpect(jsonPath("$.details").value(DEFAULT_DETAILS.toString()))
             .andExpect(jsonPath("$.author").value(DEFAULT_AUTHOR.toString()))
             .andExpect(jsonPath("$.viewNumber").value(DEFAULT_VIEW_NUMBER.intValue()))
@@ -245,7 +245,7 @@ public class RecipeResourceIT {
         updatedRecipe
             .name(UPDATED_NAME)
             .image(UPDATED_IMAGE)
-            .desciption(UPDATED_DESCIPTION)
+            .description(UPDATED_description)
             .details(UPDATED_DETAILS)
             .author(UPDATED_AUTHOR)
             .viewNumber(UPDATED_VIEW_NUMBER)
@@ -263,7 +263,7 @@ public class RecipeResourceIT {
         Recipe testRecipe = recipeList.get(recipeList.size() - 1);
         assertThat(testRecipe.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testRecipe.getImage()).isEqualTo(UPDATED_IMAGE);
-        assertThat(testRecipe.getDesciption()).isEqualTo(UPDATED_DESCIPTION);
+        assertThat(testRecipe.getdescription()).isEqualTo(UPDATED_description);
         assertThat(testRecipe.getDetails()).isEqualTo(UPDATED_DETAILS);
         assertThat(testRecipe.getAuthor()).isEqualTo(UPDATED_AUTHOR);
         assertThat(testRecipe.getViewNumber()).isEqualTo(UPDATED_VIEW_NUMBER);

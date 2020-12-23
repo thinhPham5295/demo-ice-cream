@@ -8,11 +8,11 @@
         <div class="row">
             <div class="col-sm-4">
                 <img [width]="300" [height]="200"
-                     [src]="recipe.image || '/content/images/jhipster_family_member_3.svg'" alt="recipe image">
+                     [src]="recipe.imageData || '/content/images/jhipster_family_member_3.svg'" alt="recipe image">
                 <span>{{recipe.viewNumber}}</span>
             </div>
             <div class="col-sm-7">
-                {{recipe.desciption}}
+                {{recipe.description}}
             </div>
         </div>
         <div class="row pt-5">
@@ -20,6 +20,9 @@
             {{recipe.details}}
         </div>
         <div class="pt-5">
+            <button type="button" class="btn btn-secondary" (click)="createRecipe()">
+                <span>Finish</span>
+            </button>
             <button type="button" class="btn btn-secondary" (click)="previousState()">
                 <span>Back</span>
             </button>
