@@ -44,14 +44,18 @@ export const recipeMgmtRoute: Routes = [
     }
   },
   {
-    path: 'recipe-management/:id/view',
-    component: RecipeMgmtPreviewComponent,
+    path: 'recipe-management/view',
+    component: RecipeMgmtPreviewComponent
+  },
+  {
+    path: 'recipe-management/new',
+    component: RecipeMgmtUpdateComponent,
     resolve: {
       recipe: RecipeMgmtResolve
     }
   },
   {
-    path: 'recipe-management/:id/new',
+    path: 'recipe-management/:id/edit',
     component: RecipeMgmtUpdateComponent,
     resolve: {
       recipe: RecipeMgmtResolve

@@ -24,7 +24,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="desciption" type="varchar(255)">
+            <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -78,7 +78,7 @@
             <column name="id" type="numeric"/>
             <column name="name" type="string"/>
             <column name="image" type="string"/>
-            <column name="desciption" type="string"/>
+            <column name="description" type="string"/>
             <column name="details" type="string"/>
             <column name="author" type="string"/>
             <column name="view_number" type="numeric"/>

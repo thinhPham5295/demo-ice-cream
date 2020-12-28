@@ -5,7 +5,8 @@ export interface IRecipe {
   id?: number;
   name?: string;
   image?: string;
-  desciption?: string;
+  imageData?: string;
+  description?: string;
   details?: string;
   author?: string;
   viewNumber?: number;
@@ -19,7 +20,8 @@ export class Recipe implements IRecipe {
     public id?: number,
     public name?: string,
     public image?: string,
-    public desciption?: string,
+    public imageData?: string,
+    public description?: string,
     public details?: string,
     public author?: string,
     public viewNumber?: number,

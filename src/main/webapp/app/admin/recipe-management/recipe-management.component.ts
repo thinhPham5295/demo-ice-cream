@@ -102,7 +102,7 @@ export class RecipeMgmtComponent implements OnInit {
   }
 
   transition() {
-    this.router.navigate(['/admin/Recipe-management'], {
+    this.router.navigate(['/admin/recipe-management'], {
       queryParams: {
         page: this.page,
         sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
@@ -119,5 +119,9 @@ export class RecipeMgmtComponent implements OnInit {
 
   private onError(error) {
     this.alertService.error(error.error, error.message, null);
+  }
+
+  openPreviewRecipe(recipe: IRecipe): void {
+    this.router.navigate(['/admin/recipe-management/view'], { queryParams: recipe });
   }
 }

@@ -54,7 +54,7 @@ public class RecipeResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new recipe, or with status {@code 400 (Bad Request)} if the recipe has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/recipes")
+    @PostMapping("/v1/recipes")
     public ResponseEntity<Recipe> createRecipe(@RequestBody Recipe recipe) throws URISyntaxException {
         log.debug("REST request to save Recipe : {}", recipe);
         if (recipe.getId() != null) {
